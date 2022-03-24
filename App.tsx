@@ -7,13 +7,12 @@ import {ListItem} from './src/components/ListItem';
 import {AddItem} from './src/components/AddItem';
 
 const App: React.FC = () => {
-  const [items, setItems] = useState([
-    {id: uuidv4(), text: 'Milk'},
-    {id: uuidv4(), text: 'Egg'},
-    {id: uuidv4(), text: 'Bread'},
-    {id: uuidv4(), text: 'Juice'},
-    {id: uuidv4(), text: 'Cheese'},
-  ]);
+  const [items, setItems] = useState<
+    {
+      id: string;
+      text: string;
+    }[]
+  >([]);
 
   const addItem = (text: string) => {
     if (!text) {
