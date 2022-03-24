@@ -1,6 +1,6 @@
 import 'react-native-get-random-values';
 import React, {useState} from 'react';
-import {FlatList, View} from 'react-native';
+import {Alert, FlatList, View} from 'react-native';
 import {v4 as uuidv4} from 'uuid';
 import {Header} from './src/components/Header';
 import {ListItem} from './src/components/ListItem';
@@ -16,13 +16,17 @@ const App: React.FC = () => {
   ]);
 
   const addItem = (text: string) => {
-    setItems(prevItems => {
-      const newItem = {
-        id: uuidv4(),
-        text,
-      };
-      return [newItem, ...prevItems];
-    });
+    if (!text) {
+      Alert.alert('Error', 'Please enter an item!', [{text: 'Ok'}]);
+    } else {
+      setItems(prevItems => {
+        const newItem = {
+          id: uuidv4(),
+          text,
+        };
+        return [newItem, ...prevItems];
+      });
+    }
   };
 
   const deleteItem = (id: string) => {
