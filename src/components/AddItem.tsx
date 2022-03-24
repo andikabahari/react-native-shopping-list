@@ -21,8 +21,14 @@ export const AddItem: React.FC<AddItemProps> = ({addItem}) => {
         placeholder="Item name"
         style={styles.input}
         onChangeText={value => setText(value)}
+        value={text}
       />
-      <TouchableOpacity style={styles.btn} onPress={() => addItem(text)}>
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => {
+          addItem(text);
+          setText('');
+        }}>
         <Text style={styles.btnText}>
           <Icon name="plus" size={20} /> Add item
         </Text>
