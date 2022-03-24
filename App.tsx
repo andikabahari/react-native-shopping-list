@@ -1,11 +1,12 @@
 import 'react-native-get-random-values';
 import React, {useState} from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import {v4 as uuidv4} from 'uuid';
 import {Header} from './src/components/Header';
+import {ListItem} from './src/components/ListItem';
 
 const App: React.FC = () => {
-  const [items, setItems] = useState([
+  const [items] = useState([
     {id: uuidv4(), text: 'Milk'},
     {id: uuidv4(), text: 'Egg'},
     {id: uuidv4(), text: 'Bread'},
@@ -18,7 +19,7 @@ const App: React.FC = () => {
       <Header title="Shopping List" />
       <FlatList
         data={items}
-        renderItem={({item}) => <Text>{item.text}</Text>}
+        renderItem={({item}) => <ListItem item={item} />}
       />
     </View>
   );
