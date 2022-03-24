@@ -5,14 +5,10 @@ import {v4 as uuidv4} from 'uuid';
 import {Header} from './src/components/Header';
 import {ListItem} from './src/components/ListItem';
 import {AddItem} from './src/components/AddItem';
+import {Item} from './src/types';
 
 const App: React.FC = () => {
-  const [items, setItems] = useState<
-    {
-      id: string;
-      text: string;
-    }[]
-  >([]);
+  const [items, setItems] = useState<Item[]>([]);
 
   const addItem = (text: string) => {
     if (!text) {

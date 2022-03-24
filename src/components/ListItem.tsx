@@ -1,12 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {Item} from '../types';
 
 interface ListItemProps {
-  item: {
-    id: string;
-    text: string;
-  };
+  item: Item;
   deleteItem: (id: string) => void;
 }
 
