@@ -7,14 +7,20 @@ interface ListItemProps {
     id: string;
     text: string;
   };
+  deleteItem: (id: string) => void;
 }
 
-export const ListItem: React.FC<ListItemProps> = ({item}) => {
+export const ListItem: React.FC<ListItemProps> = ({item, deleteItem}) => {
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.listItemView}>
         <Text style={styles.listItemText}>{item.text}</Text>
-        <Icon name="remove" size={20} color="firebrick" />
+        <Icon
+          name="remove"
+          size={20}
+          color="firebrick"
+          onPress={() => deleteItem(item.id)}
+        />
       </View>
     </TouchableOpacity>
   );

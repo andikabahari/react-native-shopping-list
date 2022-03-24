@@ -6,7 +6,7 @@ import {Header} from './src/components/Header';
 import {ListItem} from './src/components/ListItem';
 
 const App: React.FC = () => {
-  const [items] = useState([
+  const [items, setItems] = useState([
     {id: uuidv4(), text: 'Milk'},
     {id: uuidv4(), text: 'Egg'},
     {id: uuidv4(), text: 'Bread'},
@@ -14,12 +14,20 @@ const App: React.FC = () => {
     {id: uuidv4(), text: 'Cheese'},
   ]);
 
+  const deleteItem = (id: string) => {
+    setItems(prevItems => {
+      return prevItems.filter(item => item.id !== id);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Header title="Shopping List" />
       <FlatList
         data={items}
-        renderItem={({item}) => <ListItem item={item} />}
+        renderItem={({item}) => (
+          <ListItem item={item} deleteItem={deleteItem} />
+        )}
       />
     </View>
   );
