@@ -1,14 +1,33 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import 'react-native-get-random-values';
+import React, {useState} from 'react';
+import {FlatList, Text, View} from 'react-native';
+import {v4 as uuidv4} from 'uuid';
 import {Header} from './src/components/Header';
 
 const App: React.FC = () => {
+  const [items, setItems] = useState([
+    {id: uuidv4(), text: 'Milk'},
+    {id: uuidv4(), text: 'Egg'},
+    {id: uuidv4(), text: 'Bread'},
+    {id: uuidv4(), text: 'Juice'},
+    {id: uuidv4(), text: 'Cheese'},
+  ]);
+
   return (
-    <View>
+    <View style={styles.container}>
       <Header title="Shopping List" />
-      <Text>Hello, World!</Text>
+      <FlatList
+        data={items}
+        renderItem={({item}) => <Text>{item.text}</Text>}
+      />
     </View>
   );
+};
+
+const styles = {
+  container: {
+    flex: 1,
+  },
 };
 
 export default App;
